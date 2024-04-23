@@ -1,2 +1,2 @@
 # MotoGP
-Simulate your MotoGP sesons
+Simulate your MotoGP seasons
