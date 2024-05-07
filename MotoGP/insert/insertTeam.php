@@ -125,7 +125,7 @@
 
         <div class="form-group">
             <label for="performance">Performance</label>
-            <input type="number" name="performance" required>
+            <input type="text" name="performance" required>
         </div>
 
         <div class="form-group">

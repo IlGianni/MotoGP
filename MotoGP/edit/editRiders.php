@@ -278,7 +278,7 @@
             require_once '../config.php';
             require_once '../functions.php';
 
-            $sql = "SELECT * FROM team WHERE idCategory = " . $_GET['category'];
+            $sql = "SELECT * FROM team WHERE idCategory = " . $_GET['category'] . " ORDER BY performance ASC";
             $result = mysqli_query($conn, $sql);
             if(!$result)
                 die("Error: " . mysqli_error($conn));

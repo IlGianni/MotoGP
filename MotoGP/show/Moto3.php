@@ -79,16 +79,18 @@
             margin-left: 0; 
             margin-right: 10px;
             background-color: #111111;   
-            width: 15px;
+            width: 17px;
+            align-items: center;
+            padding-bottom: 3px;
         }
 
         label.position {
             font-family: 'MotoGP Light', sans-serif;
             color: #ffffff;
-            font-size: 20px;
+            font-size: 17px;
             width: 100%;
             margin: 0;
-            text-align: right;
+            text-align: center;
         }
 
         div.whiteSpace {
@@ -115,6 +117,7 @@
             padding-left: 0;
             padding-right: 0;
             margin: 0;
+            margin-left: -2px;
         }
 
         label.riderName {
@@ -227,7 +230,7 @@
 
         div.blackSpace {
             background-color: #1a1a1a;
-            width: 16.5px;
+            width: 20.5px;
         }
 
         div.outBox {
@@ -545,10 +548,18 @@
             }
 
             
-            echo "<div class='riderBox'>
-                <div class='position'>
-                    <label class='position'>" . $position . "</label>
-                </div>
+            echo "<div class='riderBox'>";
+                    if(strpos($race['status'], 'Pre') !== false AND $position < 15) {
+                        echo "<div class='position' style='background-color: #eeeeee;'>
+                            <label class='position' style='color: #000000;'>" . $position . "</label>";
+                    } elseif(strpos($race['status'], 'One') !== false AND $position < 5) {
+                        echo "<div class='position' style='background-color: #eeeeee;'>
+                            <label class='position' style='color: #000000;'>" . $position . "</label>";
+                    } else {
+                        echo "<div class='position'>
+                            <label class='position'>" . $position . "</label>";
+                    }
+                echo "</div>
                 <div class='coloredSpace' style='background-color: #" . $row['color'] . "'></div>
                 <label class='riderName'>" . substr($row['name'], 0, 1) . " " . substr(str_replace(' ', '', $row['surname']), 0, 3) . "</label>
                 <div class='riderNumber' style='background-color: #" . $row['color'] . "'>

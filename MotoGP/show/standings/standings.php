@@ -247,7 +247,7 @@
         $race = getRace();
         $track = getTrack($race['idTrack']);
         
-        $sql = "SELECT * FROM season";
+        $sql = "SELECT * FROM season ORDER BY year DESC";
         $result = mysqli_query($conn, $sql);
         $seasons = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
@@ -261,7 +261,7 @@
         if(isset($_GET['category']) AND isset($_GET['season'])){
             $category = $_GET['category'];
             $season = $_GET['season'];
-            $sql = "SELECT rider.name, rider.surname, rider.number, standings.points, rider.nation, team.color, category.name AS cName FROM standings 
+            $sql = "SELECT rider.name, rider.surname, rider.number, standings.points, rider.nation, team.color, category.name AS cName, team.name as teamName FROM standings 
                 INNER JOIN rider ON rider.idRider = standings.idRider
                 INNER JOIN team ON team.idTeam = rider.idTeam
                 INNER JOIN category ON category.idCategory = standings.idCategory
@@ -314,6 +314,9 @@
                 }
                 echo "<div class='distance' style='width: 40px;'>
                     <img src='../../images/" . $row['nation'] . ".svg' alt='flag' class='nationalFlag'>
+                </div>";
+                echo "<div class='distance' style='width: 290px;'>
+                    <label class='distance' style='text-align: left;'>" . $row['teamName'] . "</label>
                 </div>";
                 echo "</div>";
                 

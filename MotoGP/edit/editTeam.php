@@ -134,7 +134,7 @@
 
         <div class="form-group">
             <label for="performance">Performance</label>
-            <input type="number" name="performance" value="<?php echo $row['performance']; ?>" required>
+            <input type="text" name="performance" value="<?php echo $row['performance']; ?>" required>
         </div>
 
         <input type="submit" value="Edit Team">

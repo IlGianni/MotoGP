@@ -107,7 +107,7 @@
 
         if(isset($_POST['idRider'])) {
             $idRider = $_POST['idRider'];
-            $sql = "SELECT rider.name, rider.surname, rider.number, rider.idTeam, rider.race_performance, rider.qualy_performance, rider.wet_performance, rider.crash_possibility FROM rider
+            $sql = "SELECT rider.name, rider.surname, rider.number, rider.idTeam, rider.race_performance, rider.qualy_performance, rider.wet_performance, rider.crash_possibility, rider.idTeam, team.name as teamName, team.idCategory FROM rider
             INNER JOIN team ON rider.idTeam = team.idTeam 
             WHERE idRider = $idRider";
             $result = mysqli_query($conn, $sql);
@@ -159,7 +159,8 @@
             <label for="idTeam">Team</label>
             <select name="idTeam" id="idTeam" required>
                 <?php
-                    $sql = "SELECT * FROM team";
+                    echo "<option value='" . $row['idTeam'] . "'>" . $row['teamName'] . " - " . $row['idCategory'] . "</option>";
+                    $sql = "SELECT * FROM team WHERE idTeam != " . $row['idTeam'];
                     $result = mysqli_query($conn, $sql);
                     if(!$result)
                         die("Error: " . mysqli_error($conn));

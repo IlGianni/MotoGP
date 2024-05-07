@@ -247,7 +247,7 @@
         $race = getRace();
         $track = getTrack($race['idTrack']);
         
-        $sql = "SELECT * FROM season";
+        $sql = "SELECT * FROM season ORDER BY year DESC";
         $result = mysqli_query($conn, $sql);
         $seasons = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
